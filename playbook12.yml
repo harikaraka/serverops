@@ -1,0 +1,36 @@
+
+---
+ - name: mutliple pacakges installation
+   hosts: tlab
+   gather_facts: true
+   tasks:
+    - name: installing httpd package
+      yum:
+       name: httpd
+       state: present
+      tags: httpd
+
+    - name: installing vsftpd package
+      yum:
+       state: present
+       name: vsftpd
+      tags: vsftpd
+
+    - name: installing ftp package
+      yum:
+       state: present
+       name: ftp
+      tags: ftp
+
+    - name: installing samba package
+      yum:
+       state: present
+       name: samba
+      tags: samba
+
+    - name: installing finger pacckage
+      yum:
+       state: present
+       name: finger
+      tags: finger
+   
