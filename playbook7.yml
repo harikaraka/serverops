@@ -1,0 +1,8 @@
+
+---
+ - name: installing httpd
+   gather_facts: true
+   hosts: lab
+   tasks:
+    - name: httpd
+      yum: name=httpd state=present 
