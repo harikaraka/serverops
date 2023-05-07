@@ -1,0 +1,11 @@
+---
+ - name: to display all facts of client hosts
+   hosts: all
+   tasks:
+     - name: print all the hosts information
+       debug:
+       msg:
+         - "my hostname is {{inventory_hostname}}"
+         - "my domain name is {{ansible_facts['fqdn']}}"
+         - "my ip address is {{ansible_default_ipv4.address}}"
+...
