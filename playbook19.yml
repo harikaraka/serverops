@@ -1,0 +1,7 @@
+---
+ - name: synchronize files
+   hosts:
+   tasks:
+     - name: synchronize files with server to clients
+       synchronize: src=/etc/fstab dest=/tmp/
+...
