@@ -1,0 +1,6 @@
+---
+ - name: change ownership of file/directory
+   hosts: all
+   tasks:
+    - name: to change ownership
+      file: dest=/tmp/dir1 owner=vara group=bat22
