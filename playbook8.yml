@@ -1,0 +1,22 @@
+### changing the config file and restarting the sshd service
+#
+#---
+ - name: changing config file and restarting the sshd service
+   hosts: 
+   tasks:
+    - name: making changes to the file
+      synchronize:
+       src: /tmp/sshd_config
+       dest: /etc/sshd/sshd_config
+       backup: yes
+      notify: restarting the sshd service
+   handlers:  
+     - name: restarting the sshd service
+       service:
+         name: sshd
+         state: restarted
+     - name: showing the output
+       command: service sshd status
+       register: service_status
+     - debug:
+        var: service_status.stdout_lines
