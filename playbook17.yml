@@ -1,0 +1,31 @@
+---
+ - name: fetch/download files from client hosts
+   hosts: all
+   tasks:
+    - name: pull/download files from client hosts
+      fetch: src=/tmp/output dest=/outputs/
+...
+
+
+##########FLAT=YES##################
+#if there is no directory in server, it creates directory and fetches data from clients
+
+---
+ - name: fetch from clients
+   hosts: all
+   tasks:
+     - name: fetch all clients
+       fetch: src=/tmp/output dest=/outputs/may5/ flat=yes
+...
+
+
+#########using facts###############
+# if you want to download all the files from clients to server destination in single directory and to save the fetched files with their hostnames
+
+---
+ - name: fetch files from clients with their host names
+   hosts: all
+   tasks:
+     - name: fetch all hosts
+       fetch: src=/etc/fstab dest=/tmp/backup/{{inventory_hostname}}_fstab  flat=yes
+...
