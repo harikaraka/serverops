@@ -1,0 +1,34 @@
+
+---
+ - name: basic server info
+   hosts: amazon
+   tasks:
+    - name: kernel info
+      command: uname -a
+      register: kernel
+    - debug:
+       var: kernel.stdout_lines 
+    
+    - name: server uptime
+      command: uptime
+      register: uptime
+    - debug:
+       var: uptime.stdout_lines
+   
+    - name: date
+      command: date
+      register: date
+    - debug:
+       var: date.stdout_lines
+  
+    - name: memory information
+      command: free -h
+      register: memory
+    - debug:
+       var: memory.stdout_lines
+
+    - name: mounted file system information
+      command: df -h
+      register: filesystem
+    - debug:
+       var: filesystem.stdout_lines
