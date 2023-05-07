@@ -1,0 +1,7 @@
+---
+ - name: delete a user
+   hosts: all
+   tasks:
+     - name: delete a user
+       user: name=venki uid=1001 state=absent remove=yes
+...
