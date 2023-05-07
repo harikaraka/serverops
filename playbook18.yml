@@ -1,0 +1,6 @@
+---
+ - name: changing permissions to file or directory
+   hosts: all
+   tasks:
+     - name: To change permissions to directory
+       file: dest=/tmp/dir1 mode=777
