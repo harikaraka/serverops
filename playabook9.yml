@@ -1,0 +1,82 @@
+
+---
+ - name: service playbook
+   hosts: tlab
+   tasks:
+    - name: httpd service
+      service:
+       name: httpd
+       state: started
+       enabled: yes
+      tags: httpd
+    - command: service httpd status
+      register: httpd
+    - debug:
+       var: httpd.stdout_lines
+
+    - name: vsftpd service
+      service:
+       name: vsftpd
+       state: started
+       enabled: yes
+      tags: vsftpd
+    - command: service vsftpd status
+      register: httpd
+    - debug:
+       var: httpd.stdout_lines
+
+    - name: samba service
+      service:
+       name: samba
+       state: started
+       enabled: yes
+      tags: samba
+    - command: service smb status
+      register: smb
+    - debug:
+       var: smb.stdout_lines
+
+    - name: nfs service
+      service:
+       name: nfs
+       state: started
+       enabled: yes
+      tags: nfs
+    - command: service nfs status
+      register: nfs
+    - debug:
+       var: nfs.stdout_lines
+
+    - name: autofs service
+      service:
+       name: autofs
+       state: started
+       enabled: yes
+      tags: autofs
+    - command: service autofs status
+      register: autofs
+    - debug:
+       var: autofs.stdout_lines
+
+    - name: ntpd service
+      service:
+       name: ntpd
+       state: started
+       enabled: yes
+      tags: ntpd
+    - command: service ntpd status
+      register: ntpd
+      tags: ntpd
+    - debug:
+       var: ntpd.stdout_lines
+
+    - name: rsyslogd service
+      service:
+       name: rsyslogd
+       state: started
+       enabled: yes
+      tags: rsyslogd
+    - command: service rsyslogd status
+      register: rsyslogd
+    - debug:
+       var: rsyslogd.stdout_lines
